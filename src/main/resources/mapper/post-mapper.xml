@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PostMapper">
+	<resultMap type="Post" id="postResultMap">
+		<id property="postNo"  column="POST_NO"/>
+		<result property="postTitle" column="POST_TITLE"/>
+		<result property="postContent" column="POST_CONTENT"/>
+		<result property="postWriter" column="POST_WRITER"/>
+		<result property="postLike" column="POST_LIKE"/>
+		<result property="postDate" column="POST_DATE"/>
+		<result property="updateDate" column="UPDATE_DATE"/>
+		<result property="viewCount" column="VIEW_COUNT"/>
+		<result property="postFileName" column="POST_FILENAME"/>
+		<result property="postFilePath" column="POST_FILEPATH"/>
+		<result property="postFileLength" column="POST_FILELENGTH"/>
+	</resultMap>
+	
+	<select id="selectListCount" resultType="_int">
+		SELECT COUNT(*) FROM POST_TBL
+	</select>
+	
+	<select id="selectPostList" resultMap="postResultMap">
+		SELECT * FROM POST_TBL
+	</select>
+	
+	<insert id="insertPost">
+		INSERT INTO POST_TBL VALUES(SEQ_POST_NO.NEXTVAL, #{postTitle }, #{postContent }, #{postWriter }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, #{postFileName }, #{postFilePath }, #{postFileLength})
+	</insert>
+	
+	<select id="searchPostByKeyword" resultMap="postResultMap">
+		SELECT * FROM POST_TBL
+		<if test="searchCondition == 'all'">
+		WHERE POST_TITLE LIKE '%'||#{searchKeyword }||'%' OR POST_WRITER LIKE '%'||#{searchKeyword }||'%' OR POST_CONTENT LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+		WHERE POST_WRITER LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+		WHERE POST_TITLE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+		WHERE POST_CONTENT LIKE '%'||#{searchKeyword }||'%' 
+		</if>
+	</select>
+	
+	<select id="selectListByKeywordCount" resultType="_int">
+		SELECT COUNT(*) FROM POST_TBL
+		<if test="searchCondition == 'all'">
+		WHERE POST_TITLE LIKE '%'||#{searchKeyword }||'%' OR POST_WRITER LIKE '%'||#{searchKeyword }||'%' OR POST_CONTENT LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'writer'">
+		WHERE POST_WRITER LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'title'">
+		WHERE POST_TITLE LIKE '%'||#{searchKeyword }||'%'
+		</if>
+		<if test="searchCondition == 'content'">
+		WHERE POST_CONTENT LIKE '%'||#{searchKeyword }||'%' 
+		</if>
+	</select>
+	
+	<select id="selectOneByNo" resultMap="postResultMap">
+		SELECT * FROM POST_TBL WHERE POST_NO = #{postNo }
+	</select>
+</mapper>

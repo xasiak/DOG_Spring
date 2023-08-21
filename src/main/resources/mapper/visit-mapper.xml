@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="VisitMapper">
+
+	<resultMap type="kr.co.doglove.visit.domain.Visit" id="bookResultMap">
+		<result property="bookUserName" 	column="BOOK_USER_NAME" />
+		<result property="bookUserPhone" 	column="BOOK_USER_PHONE" />
+		<result property="bookUserEmail" 	column="BOOK_USER_EMAIL" />
+		<result property="bookPoint" column="BOOK_POINT" />
+		<result property="bookDate" 	column="BOOK_DATE" />
+		<result property="bookTime" 	column="BOOK_TIME" />
+		<result property="bookConcern" 	column="BOOK_CONCERN" />
+		<result property="bookUserHouse" 	column="BOOK_USER_HOUSE" />
+		<result property="bookUserHouseHold" 	column="BOOK_USER_HOUSEHOLD" />
+	</resultMap>
+	
+	<insert id="insertBook">
+		INSERT INTO BOOK_TBL VALUES(#{bookUserName },#{bookUserPhone },#{bookUserEmail },#{bookPoint },#{bookDate },#{bookTime },#{bookConcern },#{bookUserHouse },#{bookUserHouseHold })
+	</insert>
+	
+	<select id="selectBookList" resultMap="bookResultMap">
+		SELECT * FROM BOOK_TBL WHERE BOOK_USER_EMAIL = #{bookUserEmail } ORDER BY BOOK_DATE DESC
+	</select>
+</mapper>
