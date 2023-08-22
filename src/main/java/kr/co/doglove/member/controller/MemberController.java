@@ -98,10 +98,10 @@ public class MemberController {
 			Member member = new Member(memberEmail, memberPw, memberName, memberPhone);
 			int result = service.registerMember(member);
 			if(result > 0) {
-				model.addAttribute("msg", "로그인에 성공하였습니다");
+				model.addAttribute("msg", "회원가입에 성공하였습니다");
 				return "common/serviceSuccess";
 			}else {
-				model.addAttribute("msg", "존재하지 않는 회원 정보입니다.");
+				model.addAttribute("msg", "회원가입에 실패하였습니다.");
 				return "common/serviceFailed";
 			}
 		} catch (Exception e) {
@@ -154,7 +154,7 @@ public class MemberController {
 		try {
 			int result = service.deleteMember(memberEmail);
 			if(result > 0 ) {
-				return "redirect:/member/index.jsp";
+				return "redirect:/index.jsp";
 			}else {
 				model.addAttribute("msg", "회원탈퇴에 실패하였습니다.");
 				return "common/serviceFailed";

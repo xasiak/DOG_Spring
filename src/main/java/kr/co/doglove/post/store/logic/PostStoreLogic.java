@@ -56,4 +56,16 @@ public class PostStoreLogic implements PostStore{
 		return post;
 	}
 
+	@Override
+	public int deletePost(SqlSession sqlSession, int postNo) {
+		int result = sqlSession.delete("PostMapper.deletePost", postNo);
+		return result;
+	}
+
+	@Override
+	public int updatePost(SqlSession sqlSession, Post post) {
+		int result = sqlSession.update("PostMapper.updatePost", post);
+		return result;
+	}
+
 }

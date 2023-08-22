@@ -50,6 +50,20 @@ public interface PostService {
 	 * @return
 	 */
 	Post selectOneByNo(int postNo);
+
+	/**
+	 * 게시물 삭제 Service
+	 * @param postNo
+	 * @return
+	 */
+	int deletePost(int postNo);
+
+	/**
+	 * 게시물 수정 Service
+	 * @param post
+	 * @return
+	 */
+	int updatePost(Post post);
 	
 
 }

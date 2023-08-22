@@ -58,5 +58,17 @@ public class PostServiceImpl implements PostService{
 		return post;
 	}
 
+	@Override
+	public int deletePost(int postNo) {
+		int result = pStore.deletePost(sqlSession, postNo);
+		return result;
+	}
+
+	@Override
+	public int updatePost(Post post) {
+		int result = pStore.updatePost(sqlSession, post);
+		return result;
+	}
+
 	
 }

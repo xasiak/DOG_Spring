@@ -57,5 +57,21 @@ public interface PostStore {
 	 * @return
 	 */
 	Post selectOneByNo(SqlSession sqlSession, int postNo);
+
+	/**
+	 * 게시물 삭제 Store
+	 * @param sqlSession
+	 * @param postNo
+	 * @return
+	 */
+	int deletePost(SqlSession sqlSession, int postNo);
+
+	/**
+	 * 게시물 수정 Store
+	 * @param sqlSession
+	 * @param post
+	 * @return
+	 */
+	int updatePost(SqlSession sqlSession, Post post);
 	
 }

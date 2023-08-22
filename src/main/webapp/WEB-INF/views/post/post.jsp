@@ -13,6 +13,7 @@
 		<jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
 		<main id="main">
 			<div id="title">
+				<input type="hidden" name="postNo" value="${post.postNo }">
 				<h3>${requestScope.post.postTitle }</h3>
 				<div id="pfp">
 					<img id="pfpimg" src="/resources/images/icon/profile-smile.png"
@@ -22,6 +23,11 @@
 				<h4>${post.postDate } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회수 ${post.viewCount }</h4>
 			</div>
 			<div id="images">
+				<div>
+					<p class="text">
+						${post.postContent }
+					</p>
+				</div>
 				<div>
 					<img class="dog-img" src="/resources/images/review/review1.jpeg"
 						alt="">
@@ -54,6 +60,8 @@
 			</div>
 			<div id="list">▼&nbsp;&nbsp;제일 예쁜 보리♥</div>
 			<a href="/post//postlist.do"><button>목록</button></a>
+			<button onclick="location.href='/post/delete.do?postNo=${post.postNo}'">삭제</button>
+			<button onclick="location.href='/post/update.do?postNo=${post.postNo}'">수정</button>
 
 		</main>
 		<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
