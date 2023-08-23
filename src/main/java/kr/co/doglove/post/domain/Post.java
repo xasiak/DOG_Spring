@@ -12,6 +12,7 @@ public class Post {
 	private Date updateDate;
 	private int viewCount;
 	private String PostFileName;
+	private String PostFileRename;
 	private String PostFilePath;
 	private long PostFileLength;
 	
@@ -128,11 +129,22 @@ public class Post {
 	}
 
 
+	public String getPostFileRename() {
+		return PostFileRename;
+	}
+
+
+	public void setPostFileRename(String postFileRename) {
+		PostFileRename = postFileRename;
+	}
+
+
 	@Override
 	public String toString() {
 		return "Post [postNo=" + postNo + ", postTitle=" + postTitle + ", postContent=" + postContent + ", postWriter="
 				+ postWriter + ", postLike=" + postLike + ", postDate=" + postDate + ", updateDate=" + updateDate
-				+ ", viewCount=" + viewCount + "]";
+				+ ", viewCount=" + viewCount + ", PostFileName=" + PostFileName + ", PostFileRename=" + PostFileRename
+				+ ", PostFilePath=" + PostFilePath + ", PostFileLength=" + PostFileLength + "]";
 	}
-	
+
 }

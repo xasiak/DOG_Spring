@@ -39,7 +39,11 @@
                             <img class="dog-img" src="/resources/images/adopt/adopt1.png" alt="">
                         </div>
                         <div>
-                            <div class="text-t"><a href="/post/post.do?postNo=${post.postNo }">${post.postTitle }</a></div>
+                        	<c:url var="detailUrl" value="/post/post.do">
+                        		<c:param name="postNo" value="${post.postNo }"></c:param>
+                        	</c:url>
+                     		
+                            <div class="text-t"><a href="${detailUrl }">${post.postTitle }</a></div>
                             <div class="text-b" id="text-b">
                                 <div>♡${post.postLike }</div>
                                 <div>${post.postDate } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회수 ${post.viewCount }</div>

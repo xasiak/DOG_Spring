@@ -13,6 +13,7 @@
 		<result property="updateDate" column="UPDATE_DATE"/>
 		<result property="viewCount" column="VIEW_COUNT"/>
 		<result property="postFileName" column="POST_FILENAME"/>
+		<result property="postFileRename" column="POST_FILERENAME"/>
 		<result property="postFilePath" column="POST_FILEPATH"/>
 		<result property="postFileLength" column="POST_FILELENGTH"/>
 	</resultMap>
@@ -26,7 +27,7 @@
 	</select>
 	
 	<insert id="insertPost">
-		INSERT INTO POST_TBL VALUES(SEQ_POST_NO.NEXTVAL, #{postTitle }, #{postContent }, #{postWriter }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, #{postFileName }, #{postFilePath }, #{postFileLength})
+		INSERT INTO POST_TBL VALUES(SEQ_POST_NO.NEXTVAL, #{postTitle }, #{postContent }, #{postWriter }, DEFAULT, DEFAULT, DEFAULT, DEFAULT, #{postFileName }, #{postFileRename },#{postFilePath }, #{postFileLength})
 	</insert>
 	
 	<delete id="deletePost">
@@ -34,7 +35,7 @@
 	</delete>
 	
 	<update id="updatePost">
-		UPDATE POST_TBL SET POST_TITLE = #{postTitle }, POST_CONTENT = #{postContent }, UPDATE_DATE = DEFAULT, POST_FILENAME = #{postFileName }, POST_FILEPATH = #{postFilePath }, POST_FILELENGTH = #{postFileLength } WHERE POST_NO = #{postNo }
+		UPDATE POST_TBL SET POST_TITLE = #{postTitle }, POST_CONTENT = #{postContent }, UPDATE_DATE = DEFAULT, POST_FILENAME = #{postFileName }, POST_FILERENAME = #{postFileRename }, POST_FILEPATH = #{postFilePath }, POST_FILELENGTH = #{postFileLength } WHERE POST_NO = #{postNo }
 	</update>
 	
 	<select id="searchPostByKeyword" resultMap="postResultMap">
