@@ -28,6 +28,10 @@
 		SELECT * FROM MEMBER_TBL WHERE MEMBER_EMAIL = #{ memberEmail }
 	</select>
 	
+	<select id="emailCheck" resultType="_int">
+		SELECT COUNT(*) FROM MEMBER_TBL WHERE MEMBER_EMAIL = #{memberEmail }
+	</select>
+	
 	<delete id="deleteMember">
 		DELETE FROM MEMBER_TBL WHERE MEMBER_EMAIL = #{memberEmail }
 	</delete>

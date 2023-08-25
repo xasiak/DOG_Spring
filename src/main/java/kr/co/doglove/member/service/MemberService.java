@@ -39,4 +39,11 @@ public interface MemberService {
 	 */
 	public int deleteMember(String memberEmail);
 
+	/**
+	 * 이메일 중복체크 Service
+	 * @param memberEmail
+	 * @return
+	 */
+	public int EmailCheck(String memberEmail);
+
 }

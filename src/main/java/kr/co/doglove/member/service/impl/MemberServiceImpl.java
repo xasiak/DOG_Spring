@@ -46,4 +46,10 @@ public class MemberServiceImpl implements MemberService{
 		return result;
 	}
 
+	@Override
+	public int EmailCheck(String memberEmail) {
+		int result = mStore.EmailCheck(sqlSession, memberEmail);
+		return result;
+	}
+
 }

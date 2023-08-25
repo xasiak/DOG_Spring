@@ -68,4 +68,10 @@ public class PostStoreLogic implements PostStore{
 		return result;
 	}
 
+	@Override
+	public int updateViewCount(SqlSession sqlSession, Post postView) {
+		int result = sqlSession.update("PostMapper.updateViewCount", postView);
+		return result;
+	}
+
 }

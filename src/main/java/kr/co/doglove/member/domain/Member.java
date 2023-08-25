@@ -76,8 +76,8 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "È¸¿ø [ÀÌ¸ÞÀÏ=" + memberEmail + ", ºñ¹Ð¹øÈ£=" + memberPw + ", ÀÌ¸§=" + memberName
-				+ ", ÀüÈ­¹øÈ£=" + memberPhone + ", °¡ÀÔ³¯Â¥=" + memberDate + "]";
+		return "È¸ï¿½ï¿½ [ï¿½Ì¸ï¿½ï¿½ï¿½=" + memberEmail + ", ï¿½ï¿½Ð¹ï¿½È£=" + memberPw + ", ï¿½Ì¸ï¿½=" + memberName
+				+ ", ï¿½ï¿½È­ï¿½ï¿½È£=" + memberPhone + ", ï¿½ï¿½ï¿½Ô³ï¿½Â¥=" + memberDate + "]";
 	}
 
 	

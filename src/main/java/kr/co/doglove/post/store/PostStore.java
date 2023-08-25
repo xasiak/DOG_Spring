@@ -73,5 +73,13 @@ public interface PostStore {
 	 * @return
 	 */
 	int updatePost(SqlSession sqlSession, Post post);
+
+	/**
+	 * 게시물 조회수 Store
+	 * @param sqlSession
+	 * @param postView
+	 * @return
+	 */
+	int updateViewCount(SqlSession sqlSession, Post postView);
 	
 }

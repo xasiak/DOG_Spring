@@ -64,12 +64,24 @@
                 </div>
                 <div>
 	                <p id="p1">
+	               	<c:if test="${pInfo.startNavi != 1 }">
+						<c:url var="prevUrl" value="/post/postlist.do">
+							<c:param name="page" value="${pInfo.startNavi - 1 }"></c:param>
+						</c:url>
+						<a href="${prevUrl }">이전</a>
+					</c:if>
 	                	<c:forEach begin="${pInfo.startNavi }" end="${pInfo.endNavi }" var="p">
-	                		<c:url var="pageUrl" value="/post/postlist.do">
-	                			<c:param name="page" value="${p }"></c:param>
-	                		</c:url>
-	                		<a href="${pageUrl }">${p }</a>&nbsp;
+                		<c:url var="pageUrl" value="/post/postlist.do">
+                			<c:param name="page" value="${p }"></c:param>
+                		</c:url>
+                		<a href="${pageUrl }">${p }</a>&nbsp;
 	                	</c:forEach>
+	                <c:if test="${pInfo.endNavi != pInfo.naviTotalCount }">
+						<c:url var="nextUrl" value="/post/postlist.do">
+							<c:param name="page" value="${pInfo.endNavi + 1 }"></c:param>
+						</c:url>
+						<a href="${nextUrl }">다음</a>
+					</c:if>
 	                </p>
                 </div>
             </main>

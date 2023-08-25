@@ -45,4 +45,12 @@ public interface MemberStore {
 	 * @return
 	 */
 	public int deleteMember(SqlSession sqlSession, String memberEmail);
+
+	/**
+	 * 이메일 중복체크 Store
+	 * @param sqlSession
+	 * @param memberEmail
+	 * @return
+	 */
+	public int EmailCheck(SqlSession sqlSession, String memberEmail);
 }

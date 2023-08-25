@@ -30,8 +30,11 @@
                         </div>
                         <form action="/member/register.do" method="post">
 	                        <div id="id">
-	                            <input type="text" id="member-email" class="joinform" name="member-email" placeholder="이메일">
+	                            <input type="text" id="member-email" class="joinform" name="member-email" placeholder="이메일" >
+<!-- 	                            <input type="button" value="중복체크" class="emailSameCheck"> -->
+	                            <button><a href="/member/emailCheck.do?member-email=" + document.getElementById("member-email").value>중복체크</a></button>
 	                        </div>
+	                        
 	                        <div id="pw"> 
 	                            <input type="password" id="member-pw" class="joinform" name="member-pw" placeholder="비밀번호">
 	                        </div>
@@ -98,6 +101,13 @@
 //         	}else{
 //         		alert("different");
 //         	}
+        	document.querySelector(".emailSameCheck").addEventListener("click", () => {
+	        	const idVal = doucument.querySelector(#member-email).value;
+//         		if(idVal.value == ""){
+//         			document.querySelector(".emailSameCheck").innerText
+//         		}
+				location.href="/member/emailCheck.do?member-email="+idVal;
+        	})
         </script>
     </body>
 </html>

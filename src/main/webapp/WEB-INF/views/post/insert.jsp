@@ -28,7 +28,7 @@
 							</li>
 							<li class="form">
 								<label>작성자</label>
-								<input type="text" name="postWriter" value="${sessionScope.memberEmail }">
+								<input type="hidden" name="postWriter" value="${sessionScope.memberEmail }">
 							</li>
 							<li>
 <!-- 								<label>내용</label> -->

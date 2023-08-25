@@ -19,6 +19,13 @@ public class Post {
 	public Post() {}
 	
 	
+	public Post(int postNo, int viewCount) {
+		super();
+		this.postNo = postNo;
+		this.viewCount = viewCount;
+	}
+
+
 	public int getPostNo() {
 		return postNo;
 	}

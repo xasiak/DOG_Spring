@@ -87,6 +87,21 @@ public class MemberController {
 		}
 	}
 	
+	@RequestMapping(value="member/emailCheck.do", method=RequestMethod.GET)
+	public String emailCheck(
+			@RequestParam("member-email") String memberEmail
+			, Model model) {
+		int emailCheck = service.EmailCheck(memberEmail);
+		if(emailCheck == 1) {
+			model.addAttribute("msg", "아이디 중복");
+			model.addAttribute("url", "/member/register.jsp");
+			return "common/errorPage";
+		}else {
+			model.addAttribute("msg", "아이디 사용가능");
+			return "member/register";
+		}
+	}
+	
 	@RequestMapping(value="/member/register.do", method=RequestMethod.POST)
 	public String registerMember(
 			@RequestParam("member-email") String memberEmail

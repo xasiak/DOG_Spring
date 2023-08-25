@@ -39,4 +39,10 @@ public class MemberStoreLogic implements MemberStore{
 				return result;
 	}
 
+	@Override
+	public int EmailCheck(SqlSession sqlSession, String memberEmail) {
+		int result = sqlSession.selectOne("MemberMapper.emailCheck", memberEmail);
+		return result;
+	}
+
 }

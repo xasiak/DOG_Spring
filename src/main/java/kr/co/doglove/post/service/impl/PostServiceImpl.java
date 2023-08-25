@@ -70,5 +70,11 @@ public class PostServiceImpl implements PostService{
 		return result;
 	}
 
+	@Override
+	public int updateViewCount(Post postView) {
+		int result = pStore.updateViewCount(sqlSession, postView);
+		return result;
+	}
+
 	
 }

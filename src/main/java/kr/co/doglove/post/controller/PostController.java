@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,8 +37,24 @@ public class PostController {
 			@RequestParam("postNo") Integer postNo
 			,Model model) {
 			Post post = service.selectOneByNo(postNo);
-			model.addAttribute("post", post);
-			return "post/post";
+			String writer = post.getPostWriter();
+			int idx = writer.indexOf("@");
+			String writerfront = writer.substring(0, idx);
+			int Hit = post.getViewCount();
+			Hit += 1;
+			Post postView = new Post(postNo, Hit);
+			int result = service.updateViewCount(postView);
+			if(result > 0) {
+				model.addAttribute("viewCount", Hit);
+				model.addAttribute("writer", writerfront);
+				model.addAttribute("post", post);
+				return "post/post";
+			}else {
+				model.addAttribute("msg", "데이터 조회가 완료되지 않았습니다.");
+				model.addAttribute("error", "공지사항 목록 조회 실패");
+				model.addAttribute("url", "/index.jsp");
+				return "common/errorPage";
+			}
 	}
 
 	@RequestMapping (value="/post/postlist.do", method=RequestMethod.GET)
@@ -67,8 +84,17 @@ public class PostController {
 	}
 
 	@RequestMapping(value="/post/insert.do", method=RequestMethod.GET)
-	public String showInsertForm() {
-		return "post/insert";
+	public String showInsertForm(
+			HttpSession session
+			, Model model) {
+		String memberEmail = (String)session.getAttribute("memberEmail");
+		if(memberEmail != null){
+			return "post/insert";
+		}else {
+			model.addAttribute("msg", "로그인해주세요");
+			model.addAttribute("url", "/post/postlist.jsp");
+			return "common/errorPage";
+		}
 	}
 
 	@RequestMapping(value="/post/update.do", method=RequestMethod.GET)

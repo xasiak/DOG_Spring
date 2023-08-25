@@ -38,6 +38,10 @@
 		UPDATE POST_TBL SET POST_TITLE = #{postTitle }, POST_CONTENT = #{postContent }, UPDATE_DATE = DEFAULT, POST_FILENAME = #{postFileName }, POST_FILERENAME = #{postFileRename }, POST_FILEPATH = #{postFilePath }, POST_FILELENGTH = #{postFileLength } WHERE POST_NO = #{postNo }
 	</update>
 	
+	<update id="updateViewCount">
+		UPDATE POST_TBL SET VIEW_COUNT = #{viewCount } WHERE POST_NO = #{postNo }
+	</update>
+	
 	<select id="searchPostByKeyword" resultMap="postResultMap">
 		SELECT * FROM POST_TBL
 		<if test="searchCondition == 'all'">

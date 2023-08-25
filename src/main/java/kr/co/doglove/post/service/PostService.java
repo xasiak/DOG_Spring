@@ -64,6 +64,13 @@ public interface PostService {
 	 * @return
 	 */
 	int updatePost(Post post);
+
+	/**
+	 * 게시물 조회수 Service
+	 * @param postView
+	 * @return
+	 */
+	int updateViewCount(Post postView);
 	
 
 }

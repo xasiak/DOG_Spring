@@ -23,8 +23,8 @@
 					<img id="pfpimg" src="/resources/images/icon/profile-smile.png"
 						alt="">
 				</div>
-				<div id="name">${post.postWriter }</div>
-				<h4>${post.postDate } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회수 ${post.viewCount }</h4>
+				<div id="name">${writer } </div>
+				<h4>${post.postDate } &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 조회수 ${viewCount }</h4>
 			</div>
 			<div id="images">
 				<div>
