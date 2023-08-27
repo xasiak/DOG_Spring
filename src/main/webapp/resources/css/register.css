@@ -229,7 +229,6 @@ header {
         height: 40px;
     }
 
-
     ::placeholder {
         font-size: 15px;
         padding-left: 10px;
@@ -237,16 +236,21 @@ header {
     }
 
     #joinbtn {
-        margin: 60px 0 10px;
+        margin: 10px 0 10px;
         background-color: rgb(226, 226, 226);
         border: 1px solid rgb(114, 114, 114);
     }
-    /* #loginval {
-        border-collapse: collapse;
-    } */
+    #emailCheckBtn {
+     	width: 100px;
+        height: 30px;
+        margin: 10px 0 10px;
+        background-color: rgb(226, 226, 226);
+        border: 1px solid rgb(114, 114, 114);
+        border-radius: 5px;
+    }
+
     #id > input {
         border: 1px solid rgb(110, 110, 110);
-        border-bottom: none;
     }
     #pw > input {
         border: 1px solid rgb(110, 110, 110);
@@ -257,7 +261,29 @@ header {
         margin-top: 15px;
         font-weight: 500;
     }
+    
+.button-container {
+	margin-top: 25px;
+    display: flex;
+    justify-content: space-evenly;
+}
 
+.joinform-button {
+	width: 200px;
+	height: 50px;
+    background-color: #56afcf;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    transition: background-color 0.3s, color 0.3s; /* 변화를 부드럽게 만들기 위한 트랜지션 설정 */
+}
+
+.joinform-button:hover {
+    background-color: #266d88; /* 마우스 올릴 때의 배경색 */
+    color: #fff; /* 마우스 올릴 때의 텍스트 색 */
+}
 /* 푸터 */
 #footer {
     font-family: 'SUITE-Regular';

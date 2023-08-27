@@ -13,9 +13,8 @@
             <a href="/index.jsp"><img id="logo-img" src="/resources/images/icon/logo.png" alt=""></a>
         </div>
         <div id="header-layer1-b">
-            <a href="/index.jsp"><h1 id="logo1">사랑하개</h1>
-            <a href="/index.jsp"><p id="logo2">사랑하개는 사지 않고 입양하는 문화를 만듭니다.</p>
-        </a>
+            <a href="/index.jsp"><h1 id="logo1">사랑하개</h1></a>
+            <a href="/index.jsp"><p id="logo2">사랑하개는 사지 않고 입양하는 문화를 만듭니다.</p></a>
         </div>
     </div>
     <div id="header-layer2">
@@ -55,7 +54,7 @@
                 <li><a href="/visit/book.do">방문예약</a></li>
                 <li><a href="/visit/location.do">상담문의&방문</a></li>
             </ul>
-            </li>
+        </li>
         <li>
             <a href="#">제보/실종</a>
         </li>

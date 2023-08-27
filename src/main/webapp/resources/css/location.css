@@ -134,19 +134,44 @@ header {
         margin-top: 10px;
         width: 50px;
     }
+/* gpt */
+#imgs-container {
+	margin-top: 20px;
+  overflow: hidden;
+  width: 100vw;
+}
 
-#main {
+#imgs {
+  display: flex;
+  animation: slideImages 50s linear infinite;
+}
+
+#imgs .img {
+  width: 400px;
+  margin-right: 20px;
+  object-fit: cover;
+}
+
+@keyframes slideImages {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* gpt */
+#container {
+  overflow-x: hidden; /* 가로 스크롤 숨기기 */
+}
+#section {
     width: 1000px;
-    height: 1300px;
+    height: 1000px;
     margin: 50px auto;
     font-family: 'SUITE-Regular';
     text-align: center;
 }
-    #dog-img {
-        margin-top: 70px;
-        width: 150px;
-        filter: drop-shadow(5px 5px 3px  #4f758f28);
-    }
     h2 {
         color: #0976a8;
         font-size: 50px;

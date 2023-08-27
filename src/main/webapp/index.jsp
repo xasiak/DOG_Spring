@@ -7,6 +7,9 @@
 		<title>메인페이지</title>
         <link rel="stylesheet" href="/resources/css/index.css">
         <link rel="stylesheet" href="/resources/css/reset.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+   	 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   	 	<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     </head>
     <body>
         <div id="container">
@@ -15,7 +18,7 @@
                 <section id="main-layer1">
                     <a href="#"><img id="maintop-img" src="/resources/images/main.png" alt=""></a>
                 </section>
-                <section class="main-layer" id="main-layer2">
+                <section class="main-layer" id="main-layer2" data-aos="fade-up">
                     <div id="main2-text">
                         <h2>보호중 아이들</h2>
                         <h3>아이들에게 따뜻한 손을 내밀어주세요.<button class="more" type="button" onclick="location.href='#'">더보기</button></h3>
@@ -34,8 +37,8 @@
                         <div class="main-img"><img class="img" src="/resources/images/protection/protection10.png" alt=""></div>
                     </div>
                 </section>
-                <section class="main-layer" id="main-layer3">
-                    <div id="main3-text">
+                <section class="main-layer" id="main-layer3"  data-aos="fade-up">
+                    <div id="main3-text" >
                         <a href="#"><h2>함께하는 환경</h2></a>
                         <a href="#"><h3>'사랑하개는 아이들이 좋아하는 환경을 만들기 위해 세심하게 신경을 기울입니다.<button class="more" type="button" onclick="location.href='#'">더보기</button></h3></a>
                     </div>
@@ -52,7 +55,7 @@
                         <div class="main-img"><img class="img" src="/resources/images/environment/environment10.png" alt=""></div>
                     </div>
                 </section>
-                <section class="main-layer" id="main-layer4">
+                <section class="main-layer" id="main-layer4"  data-aos="fade-up">
                     <div id="main4-text">
                         <a href="#"><h2>입양사진 및 후기</h1></a>
                         <a href="#"><h3>우리 아이들의 행복뿜뿜 즐거운 생활! 함께하개는 아이를 극진히 사랑할 가족과 이어줍니다.<button class="more" type="button" onclick="location.href='/post/postlist.do'">더보기</button></h3></a>
@@ -73,6 +76,8 @@
             </main>
             <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
         </div>
+    <script>
+  		AOS.init();
+	</script>
     </body>
-</html>
 </html>

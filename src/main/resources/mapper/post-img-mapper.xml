@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="PostMapper">
+	<resultMap type="Post" id="postResultMap">
+		<id property="postImgNo"  column="POST_IMG_NO"/>
+		<result property="postNo" column="POST_NO"/>
+		<result property="postImgName" column="POST_IMG_NAME"/>
+		<result property="postImgReame" column="POST_IMG_RENAME"/>
+		<result property="postImgPath" column="POST_IMG_PATH"/>
+		<result property="postImgLength" column="POST_IMG_LENGTH"/>
+		<result property="postImgOrder" column="POST_IMG_ORDER"/>
+	</resultMap>
+	
+</mapper>

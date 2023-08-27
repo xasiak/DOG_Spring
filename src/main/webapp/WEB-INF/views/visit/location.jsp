@@ -12,15 +12,21 @@
         <div id="container">
             <jsp:include page="/WEB-INF/views/include/header.jsp"></jsp:include>
             <main id="main">
-                <div id="title">
-                    <div>
-                        <img id="dog-img" src="/resources/images/icon/dog.png" alt="">
+            	<div id="imgs-container">
+                    <div id="imgs">
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment1.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment2.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment3.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment4.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment5.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment6.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment7.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment8.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment9.png" alt=""></div>
+                        <div class="main-img"><img class="img" src="/resources/images/environment/environment10.png" alt=""></div>
                     </div>
-                    <div>
-                        <h2>상담문의&방문</h2>
-                    </div>
-                </div>
-                    <div id="">
+               	</div>
+                    <div id="section">
                         <div class="info">
                             <div class="info-l">
                                 <div class="info-t">사랑하개 서울본점 오시는 길</div>
@@ -61,5 +67,6 @@
              </main>
              <jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
             </div>
+
         </body>
     </html>

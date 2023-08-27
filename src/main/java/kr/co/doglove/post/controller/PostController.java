@@ -24,6 +24,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.doglove.post.domain.PageInfo;
 import kr.co.doglove.post.domain.Post;
+import kr.co.doglove.post.domain.PostImg;
 import kr.co.doglove.post.service.PostService;
 
 @Controller
@@ -110,6 +111,7 @@ public class PostController {
 	@RequestMapping(value="/post/insert.do", method=RequestMethod.POST)
 	public String insertPost(
 			@ModelAttribute Post post
+			, @ModelAttribute PostImg postImg
 			, @RequestParam(value="uploadFile", required=false) MultipartFile uploadFile
 			, HttpServletRequest request  // 파일 경로 가져오기 위해서 추가
 			, Model model) {
