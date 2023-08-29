@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>서비스 결과 성공</title>
+		<title>서비스 결과 성공</title> 
 	</head>
 	<body>
 		<script>

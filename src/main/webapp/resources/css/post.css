@@ -209,8 +209,6 @@ a {
 /* 메인 */
 #main {
 	width: 1200px;
-	margin-left: 5%;
-	margin-right: 5%;
 	margin-top: 20px;
 	margin-bottom: 20px; /* 추가적으로 아래 여백을 설정해 줄 수 있습니다 */
 	margin: 0 auto;
@@ -218,7 +216,7 @@ a {
 }
 
 #title {
-	width: 1300px;
+	width: 1200px;
 	height: 120px;
 	margin: 0 auto;
 	margin-bottom: 50px;
@@ -252,6 +250,9 @@ h3 {
 h4 {
 	padding-top: 10px;
 	font-size: 15px;
+}
+#container {
+	margin-bottom : 30px;
 }
 /*  ===============   이미지 =============== */
 .post-img-wrapper {
@@ -321,7 +322,7 @@ h4 {
 }
 
 #list {
-	width: 1300px;
+	width: 1200px;
 	font-size: 15px;
 	border-top: 1px solid gray;
 	border-bottom: 1px solid gray;
@@ -329,23 +330,52 @@ h4 {
 	margin: 0 auto;
 }
 
-.formBtn {
+#post-Btn {
 	font-size: 15px;
-	width: 50px;
-	height: 25px;
-	margin-left: 60px;
-	margin-top: 10px;
+    width: 70px;
+    height: 25px;
+    /* margin-left: 60px; */
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#post-btn {
+	text-align: right;
 }
 
 /* 댓글 */
 
 /* 댓글 관련 스타일 */
+
+table {
+	width : 1200px;
+	border-radius: 5px;
+	border : 1px solid #adadad;
+}
+textarea {
+	border: none; /* 테두리 제거 */
+    outline: none; /* 포커스 시 외곽선 제거 */
+    resize: none; /* 크기 조절 핸들 제거 */
+    background-color: transparent; /* 배경색 투명으로 설정 */
+    font-family: inherit; /* 부모 요소의 글꼴 상속 */
+    font-size: inherit; /* 부모 요소의 글꼴 크기 상속 */
+    padding: 0; /* 내부 여백 제거 */
+    height: 30px;
+}
+#textarea-btn {
+	width: 50px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
 #replySection {
-	width: 1300px;
+	width: 1200px;
 	margin-top: 20px;
 	padding: 20px;
 	height: 500px;
-	margin: 0 auto;
+}
+
+#reply-section > form {
+	margin:0 auto;
 }
 
 #replyForm {
@@ -374,7 +404,7 @@ h4 {
 	border: 1px solid #ccc;
 	background-color: white;
 	padding: 10px;
-	margin-bottom: 10px;
+	margin-top: 10px;
 	border-radius: 5px;
 }
 
@@ -411,12 +441,11 @@ h4 {
 
 /* 댓글 수정 폼 */
 #replyModifyForm {
-	display: none;
 	background-color: #f9f9f9;
 	padding: 10px;
-	margin-top: 10px;
 	border: 1px solid #ccc;
 	border-radius: 5px;
+	margin-top : 5px;
 }
 
 #replyModifyForm input[type="text"] {
@@ -451,7 +480,7 @@ h4 {
 .reply {
 	border-bottom: 1px solid #ccc;
 	padding-bottom: 20px;
-	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 .reply .info {

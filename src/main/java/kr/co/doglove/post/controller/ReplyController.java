@@ -80,6 +80,41 @@ public class ReplyController {
 		}
 		return mv;
 	}
+	
+	@RequestMapping(value="/delete.do", method=RequestMethod.GET)
+	public ModelAndView deleteReply(ModelAndView mv
+			, @ModelAttribute Reply reply
+			, HttpSession session) {
+		String url = "";
+		try {
+			String memberEmail = (String)session.getAttribute("memberEmail");
+			String replyWriter = reply.getReplyWriter();
+			url = "/post/post.do?postNo="+reply.getRefPostNo();
+			if(replyWriter != null && replyWriter.equals(memberEmail)) {
+				int result = rService.deleteReply(reply);
+				if(result > 0) {
+					mv.setViewName("redirect:"+url);
+				}else {
+					mv.addObject("msg", "로그인이 되지 않았습니다.");
+					mv.addObject("error", "로그인 정보확인 실패");
+					mv.addObject("url", "/index.jsp");
+					mv.setViewName("common/errorPage");
+				}
+			}else {
+				mv.addObject("msg", "자신의 댓글만 삭제할 수 있습니다.");
+				mv.addObject("error", "댓글삭제 불가");
+				mv.addObject("url", url);
+				mv.setViewName("common/errorPage");
+			}
+		} catch (Exception e) {
+			mv.addObject("msg", "관리자에게 문의바랍니다.");
+			mv.addObject("error", e.getMessage());
+			mv.addObject("url", url);
+			mv.setViewName("common/errorPage");
+		}
+		return mv;
+	}
+	
 }
 
 

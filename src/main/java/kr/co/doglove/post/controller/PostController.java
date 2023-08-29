@@ -1,6 +1,7 @@
 package kr.co.doglove.post.controller;
 
 import java.io.File;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,10 +23,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 import kr.co.doglove.post.domain.PageInfo;
 import kr.co.doglove.post.domain.Post;
 import kr.co.doglove.post.domain.PostImg;
+import kr.co.doglove.post.domain.Reply;
 import kr.co.doglove.post.service.PostService;
+import kr.co.doglove.post.service.ReplyService;
 
 @Controller
 public class PostController {
@@ -33,31 +37,79 @@ public class PostController {
 	@Autowired
 	private PostService service;
 	
+	@Autowired
+	private ReplyService rService;
+	
 	@RequestMapping(value="post/post.do", method=RequestMethod.GET)
 	public String showPostDetail(
 			@RequestParam("postNo") Integer postNo
 			,Model model) {
+		try {
 			Post post = service.selectOneByNo(postNo);
-			String writer = post.getPostWriter();
-			int idx = writer.indexOf("@");
-			String writerfront = writer.substring(0, idx);
-			int Hit = post.getViewCount();
-			Hit += 1;
-			Post postView = new Post(postNo, Hit);
-			int result = service.updateViewCount(postView);
-			if(result > 0) {
-				model.addAttribute("viewCount", Hit);
-				model.addAttribute("writer", writerfront);
-				model.addAttribute("post", post);
-				return "post/post";
-			}else {
-				model.addAttribute("msg", "데이터 조회가 완료되지 않았습니다.");
-				model.addAttribute("error", "공지사항 목록 조회 실패");
-				model.addAttribute("url", "/index.jsp");
+//			String writer = post.getPostWriter();
+//			int idx = writer.indexOf("@");
+//			String writerfront = writer.substring(0, idx);	
+			if(post != null) {
+				Post postView = new Post(postNo, 0);
+				int result = service.updateViewCount(postView);
+				if(result > 0) {
+					List<Reply> replyList = rService.selectReplyList(postNo);
+					if(replyList.size() > 0) {
+						model.addAttribute("rList", replyList);
+					}
+//					String writer = post.getPostWriter();
+//					int idx = writer.indexOf("@");
+//					String writerfront = writer.substring(0, idx);
+//					model.addAttribute("writer", writerfront);
+					model.addAttribute("post", post);	
+					return "post/post";
+				}else {
+					model.addAttribute("msg", "게시글 조회가 완료되지 않았습니다2.");
+					model.addAttribute("error", "게시글 상세 조회 실패");
+					model.addAttribute("url", "/post/postlist.do");
+					return "common/errorPage";
+				}
+			} else {
+				model.addAttribute("msg", "게시글 조회가 완료되지 않았습니다2.");
+				model.addAttribute("error", "게시글 상세 조회 실패");
+				model.addAttribute("url", "/post/postlist.do");
 				return "common/errorPage";
 			}
+//			int Hit = post.getViewCount();
+//			Hit += 1;
+//			Post postView = new Post(postNo, 0);
+//			int result = service.updateViewCount(postView);
+//			if(result > 0) {
+//				Post post = service.selectOneByNo(postNo);
+//				String writer = post.getPostWriter();
+//				int idx = writer.indexOf("@");
+//				String writerfront = writer.substring(0, idx);
+//				List<Reply> replyList = rService.selectReplyList(postNo);
+//				if(post != null && replyList.size() > 0) {
+//					model.addAttribute("rList", replyList);
+//					model.addAttribute("writer", writerfront);
+//					model.addAttribute("post", post);
+//					return "post/post";
+//				}else {
+//					model.addAttribute("msg", "DATA 조회가 완료되지 않았습니다!.");
+//					model.addAttribute("error", "댓글 조회 실패");
+//					model.addAttribute("url", "/index.jsp");
+//					return "common/errorPage";
+//				}
+//			}else {
+//				model.addAttribute("msg", "조회 증가가 완료되지 않았습니다.");
+//				model.addAttribute("error", "조회 증가 실패");
+//				model.addAttribute("url", "/index.jsp");
+//				return "common/errorPage";
+//			}
+		} catch (Exception e) {
+			model.addAttribute("msg", "관리자에게 문의해주세요.");
+			model.addAttribute("error", e.getMessage());
+			model.addAttribute("url", "/index.jsp");
+			return "common/errorPage";
+		}
 	}
-
+	
 	@RequestMapping (value="/post/postlist.do", method=RequestMethod.GET)
 	public String showPostList(
 			@RequestParam(value="page", required=false, defaultValue="1") Integer currentPage

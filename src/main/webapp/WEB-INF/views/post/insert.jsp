@@ -21,14 +21,11 @@
                 </div>
                 <div id="posts">
                     <form action="/post/insert.do" method="post" enctype="multipart/form-data">
+					<input type="hidden" name="postWriter" value="${sessionScope.memberEmail }">
 						<ul>
 							<li class="form">
 								<label>제목</label>
 								<input type="text" name="postTitle">
-							</li>
-							<li class="form">
-								<label>작성자</label>
-								<input type="hidden" name="postWriter" value="${sessionScope.memberEmail }">
 							</li>
 							<li>
 <!-- 								<label>내용</label> -->

@@ -27,9 +27,9 @@
 						<img id="pfpimg" src="/resources/images/icon/profile-smile.png"
 							alt="">
 					</div>
-					<div id="name">${writer }</div>
+					<div id="name">${post.postWriter }</div>
 					<h4>${post.postDate }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;조회수
-						${viewCount }</h4>
+						${post.viewCount }</h4>
 				</div>
 				<div class="post-img-container">
 					<div class="post-img">
@@ -54,35 +54,43 @@
 
 				<p class="text">${post.postContent }</p>
 			</div>
-			<div id="list">▼&nbsp;&nbsp;제일 예쁜 보리♥</div>
-			<a href="/post//postlist.do"><button>목록</button></a>
-			<button class="formBtn"
+			<div id="post-btn">
+			<button class="main-Btn"
 				onclick="location.href='/post/delete.do?postNo=${post.postNo}'">삭제</button>
-			<button class="formBtn"
+			<button class="main-Btn"
 				onclick="location.href='/post/update.do?postNo=${post.postNo}'">수정</button>
-	</div>
+			</div>
+			<div id="list">▼&nbsp;&nbsp;제일 예쁜 보리♥</div>
+			<a href="/post//postlist.do"><button id="list-btn" class="main-Btn">목록</button></a>
 	<div id="reply-section" class="dynamic-height">
 		<form action="/reply/add.do" method="post">
 			<input type="hidden" name="refPostNo" value="${post.postNo }">
-			<table width="800" border="1">
+			<table>
+				<colgroup>
+			        <col style="width: 95%;">
+			        <col style="width: 5%;">
+			    </colgroup>
 				<tr>
 					<td><textarea rows="3" cols="110" name="replyContent"></textarea>
 					</td>
-					<td><input type="submit" value="완료"></td>
+					<td><input id="textarea-btn" type="submit" value="완료"></td>
 				</tr>
 			</table>
 		</form>
 		<!-- 댓글 목록 -->
-		<div id="replyList">
+		<div id="replyList" class="dynamic-height">
 			<c:forEach var="reply" items="${rList}">
+				<c:url var="delReplyUrl" value="/reply/delete.do">
+					<c:param name="replyNo" value="${reply.replyNo}"></c:param>
+					<c:param name="replyWriter" value="${reply.replyWriter}"></c:param>
+				</c:url>
 				<div class="reply">
 					<div class="info">${reply.replyWriter}</div>
 					<div class="content">${reply.replyContent}</div>
 					<div class="date">${reply.rCreateDate}</div>
 					<div class="actions">
-						<a href="javascript:void(0);"
-							onclick="showReplyModifyForm(this, '${reply.replyContent}')">수정하기</a>
-						<a href="#">삭제하기</a>
+						<a href="javascript:void(0);" onclick="showReplyModifyForm(this)">수정하기</a>
+						<a href="javascript:void(0);" onclick="deleteReply('${delReplyUrl }');">삭제하기</a>
 					</div>
 				</div>
 				<div id="replyModifyForm" style="display: none;">
@@ -96,10 +104,21 @@
 				</div>
 			</c:forEach>
 		</div>
-	</main>
-	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	</div>
+	</main>
+	</div>
+	<jsp:include page="/WEB-INF/views/include/footer.jsp"></jsp:include>
 	<script type="text/javascript">
+	const deleteReply = (delReplyUrl) => {
+		location.href = delReplyUrl;
+	}
+	
+	function showReplyModifyForm(obj) {
+	    console.log("showReplyModifyForm 함수 호출됨");
+	    obj.parentElement.parentElement.nextElementSibling.style.display = "";
+	}
+	
+	
 		function showModifyPage() {
 			const PostNo = "${post.postNo }";
 			location.href = "/post/modify.do?postNo=" + postNo;
@@ -151,6 +170,15 @@
 
 			updateImageDisplay();
 		});
+		
+		// 이메일 자르기
+		var postWriterElement = document.getElementById('name');
+        var postWriterValue = postWriterElement.textContent; // @를 포함한 원래의 문자열
+
+        var atIndex = postWriterValue.indexOf('@'); // @의 인덱스 찾기
+        var result = (atIndex !== -1) ? postWriterValue.substring(0, atIndex) : postWriterValue;
+
+        postWriterElement.textContent = result; // @를 제외한 앞부분만 표시
 	</script>
 </body>
 </html>

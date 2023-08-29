@@ -157,8 +157,8 @@ document.querySelector("form").addEventListener("submit", function(event) {
         return;
     }
 
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", "/member/emailCheck.do?member-email=" + encodeURIComponent(email), true);
+//     const xhr = new XMLHttpRequest();
+//     xhr.open("GET", "/member/emailCheck.do?member-email=" + encodeURIComponent(email), true);
 
     if (!isEmailChecked) { // 이메일 중복 체크 확인 여부를 검사
         alert("이메일 중복 체크를 수행해야 합니다.");

@@ -39,7 +39,7 @@
 	</update>
 	
 	<update id="updateViewCount">
-		UPDATE POST_TBL SET VIEW_COUNT = #{viewCount } WHERE POST_NO = #{postNo }
+		UPDATE POST_TBL SET VIEW_COUNT = VIEW_COUNT+1 WHERE POST_NO = #{postNo }
 	</update>
 	
 	<select id="searchPostByKeyword" resultMap="postResultMap">

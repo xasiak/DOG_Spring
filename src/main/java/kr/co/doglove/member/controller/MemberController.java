@@ -1,4 +1,4 @@
-package kr.co.doglove.member.controller;
+ package kr.co.doglove.member.controller;
 
 import java.lang.ProcessBuilder.Redirect;
 
@@ -111,6 +111,7 @@ public class MemberController {
 			int result = service.registerMember(member);
 			if(result > 0) {
 				model.addAttribute("msg", "회원가입에 성공하였습니다");
+				
 				return "common/serviceSuccess";
 			}else {
 				model.addAttribute("msg", "회원가입에 실패하였습니다.");

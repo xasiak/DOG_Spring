@@ -12,6 +12,8 @@ import kr.co.doglove.post.store.ReplyStore;
 @Repository
 public class ReplyStoreLogic implements ReplyStore{
 
+	
+	
 	@Override
 	public int insertReply(SqlSession sqlSession, Reply reply) {
 		int result = sqlSession.insert("ReplyMapper.insertReply", reply);
@@ -27,6 +29,12 @@ public class ReplyStoreLogic implements ReplyStore{
 	@Override
 	public int updateReply(SqlSession sqlSession, Reply reply) {
 		int result = sqlSession.update("ReplyMapper.updateReply", reply);
+		return result;
+	}
+
+	@Override
+	public int deleteReply(SqlSession sqlSession, Reply reply) {
+		int result = sqlSession.delete("ReplyMapper.deleteReply, reply");
 		return result;
 	}
 
