@@ -34,7 +34,7 @@ public class ReplyStoreLogic implements ReplyStore{
 
 	@Override
 	public int deleteReply(SqlSession sqlSession, Reply reply) {
-		int result = sqlSession.delete("ReplyMapper.deleteReply, reply");
+		int result = sqlSession.delete("ReplyMapper.deleteReply", reply);
 		return result;
 	}
 

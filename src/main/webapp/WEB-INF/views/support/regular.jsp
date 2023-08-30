@@ -26,26 +26,21 @@
 			<ul>
 				<li>
 					회원명 ※필수항목<br>
-					<input type="text" name="support-name" placeholder="예: 홍길동">
-				</li>
-				<li>
-					회원명 ※필수항목<br>
-					<input type="text" name="support-name" placeholder="예: 홍길동"><br>
+					<input type="text" name="supportName" placeholder="예: 홍길동"><br>
 				</li>
 				<li>
 					휴대전화  ※필수항목<br>
-					<input type="text" name="support-phone1">
-					-<input type="text" name="support-phone2">
-					-<input type="text" name="support-phone3"><br>
+					<input type="text" name="supportPhone">
 				</li>
 				<li>
 					이메일  ※필수항목<br>
-					<input type="text" name="support-email">@
+					<input type="text" name="supportEmail">@
 					
 				</li>
 				<li>
 					주소 ※필수항목<br>
-					<input>
+					<input type="text" name="supportAddr">
+					<input type="button" onclick="sample4_execDaumPostcode();" value="우편번호 찾기">
 				</li>
 				<li>
 					회원구분 ※필수항목<br>
@@ -117,5 +112,16 @@
 		</div>
 	 </main>
 	</div>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+		<script>
+			function sample4_execDaumPostcode(){
+				new daum.Postcode({
+					oncomplete : function(data){
+						document.querySelector("#memberAddress")
+		        		.value = "(" + data.zonecode + ") " + data.jibunAddress + ", " + data.buildingName;
+					}
+				}).open();
+			}
+		</script>
 	</body>
 </html>

@@ -89,6 +89,8 @@ public class ReplyController {
 		try {
 			String memberEmail = (String)session.getAttribute("memberEmail");
 			String replyWriter = reply.getReplyWriter();
+			System.out.println(reply.toString());
+			System.out.println(memberEmail);
 			url = "/post/post.do?postNo="+reply.getRefPostNo();
 			if(replyWriter != null && replyWriter.equals(memberEmail)) {
 				int result = rService.deleteReply(reply);

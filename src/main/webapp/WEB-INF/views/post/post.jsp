@@ -55,13 +55,13 @@
 				<p class="text">${post.postContent }</p>
 			</div>
 			<div id="post-btn">
-			<button class="main-Btn"
+			<button class="main-btn"
 				onclick="location.href='/post/delete.do?postNo=${post.postNo}'">삭제</button>
-			<button class="main-Btn"
+			<button class="main-btn"
 				onclick="location.href='/post/update.do?postNo=${post.postNo}'">수정</button>
 			</div>
 			<div id="list">▼&nbsp;&nbsp;제일 예쁜 보리♥</div>
-			<a href="/post//postlist.do"><button id="list-btn" class="main-Btn">목록</button></a>
+			<a href="/post//postlist.do"><button id="list-btn">목록</button></a>
 	<div id="reply-section" class="dynamic-height">
 		<form action="/reply/add.do" method="post">
 			<input type="hidden" name="refPostNo" value="${post.postNo }">
@@ -81,6 +81,7 @@
 		<div id="replyList" class="dynamic-height">
 			<c:forEach var="reply" items="${rList}">
 				<c:url var="delReplyUrl" value="/reply/delete.do">
+					<c:param name="refPostNo" value="${reply.refPostNo}"></c:param>
 					<c:param name="replyNo" value="${reply.replyNo}"></c:param>
 					<c:param name="replyWriter" value="${reply.replyWriter}"></c:param>
 				</c:url>
@@ -133,7 +134,7 @@
 			var contentHeight = mainDiv.clientHeight; // 실제 내용의 높이
 
 			// 조절하고자 하는 여백 값(예: 100px)을 더해줄 수도 있습니다.
-			var padding = 100;
+			var padding = 50;
 
 			mainDiv.style.height = contentHeight + padding + 'px';
 		}
